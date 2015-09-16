@@ -1,0 +1,30 @@
+{
+  "name": "generator-gulp-underscore",
+  "version": "0.0.0",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "webmakersteve/generator-gulp-underscore",
+  "author": {
+    "name": "Stephen Parente",
+    "email": "sparente@91ferns.com",
+    "url": "https://github.com/webmakersteve"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.19.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
