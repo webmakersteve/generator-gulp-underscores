@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
@@ -10,7 +12,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var paths = {
   scripts: 'js/**/*.coffee',
   images: 'images/**/*',
-  sass: 'style.scss',
+  sass: 'sass/style.scss',
   php: './**/*.php'
 };
 
@@ -21,15 +23,15 @@ gulp.task('scripts', function() {
     .pipe(sourcemaps.init())
       .pipe(coffee())
       .pipe(uglify())
-      .pipe(concat('gpi.min.js'))
+      .pipe(concat('main.min.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('js'))
     .pipe(livereload());
 });
 
 gulp.task('php', function() {
-  livereload.reload('/')
-})
+  livereload.reload('/');
+});
 
 gulp.task('sass', function () {
   gulp.src(paths.sass)

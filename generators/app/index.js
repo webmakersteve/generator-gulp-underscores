@@ -41,9 +41,17 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     app: function () {
-      this.fs.copy(
+      /* jshint -W106 */
+      this.fs.copyTpl(
         this.templatePath('_'),
-        this.destinationPath('.')
+        this.destinationPath('.'),
+        {
+          theme_name: 'name',
+          theme_uri: 'uri',
+          theme_description: 'description',
+          theme_author: 'author',
+          theme_slug: 'slug'
+        }
       );
 
       this.fs.copy(
@@ -64,6 +72,14 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('jshintrc'),
         this.destinationPath('.jshintrc')
+      );
+      this.fs.copy(
+        this.templatePath('Gulpfile.js'),
+        this.destinationPath('Gulpfile.js')
+      );
+      this.fs.copy(
+        this.templatePath('gitignore'),
+        this.destinationPath('.gitignore')
       );
     }
   },
