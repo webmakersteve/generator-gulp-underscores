@@ -1,10 +1,10 @@
 {
-  "name": "generator-gulp-underscore",
+  "name": "generator-gulp-underscores",
   "version": "0.0.0",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator for scaffolding out Underscores apps with SASS, Bootstrap, and Gulp.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "webmakersteve/generator-gulp-underscore",
+  "repository": "webmakersteve/generator-gulp-underscores",
   "author": {
     "name": "Stephen Parente",
     "email": "sparente@91ferns.com",
