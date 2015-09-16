@@ -160,3 +160,9 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Custom bootstrap walkers
+ */
+require get_template_directory() . '/inc/nav-walker.php';
+require get_template_directory() . '/inc/comments-walker.php';

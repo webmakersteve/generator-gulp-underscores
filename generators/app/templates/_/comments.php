@@ -49,7 +49,7 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list">
 			<?php
-				wp_list_comments( array(
+				<%= theme_slug %>_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
 				) );
@@ -77,6 +77,6 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', '<%= theme_slug %>' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php <%= theme_slug %>_comment_form(); ?>
 
 </div><!-- #comments -->
