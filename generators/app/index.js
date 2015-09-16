@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var slug = require('slug');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -14,9 +15,33 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'input',
+      name: 'theme_author',
+      message: 'What\'s your name?',
+      default: this.appname + ' author'
+    },
+    {
+      type: 'input',
       name: 'theme_name',
       message: 'What\'s the name of your awesome theme?',
       default: this.appname,
+    },
+    {
+      type: 'input',
+      name: 'theme_slug',
+      message: 'What slug should identify your app?',
+      default: slug(this.appname, '_'),
+    },
+    {
+      type: 'input',
+      name: 'theme_uri',
+      message: 'What\'s your URI?',
+      default: '',
+    },
+    {
+      type: 'input',
+      name: 'theme_description',
+      message: 'Theme description',
+      default: '',
     },
     {
       type: 'confirm',
@@ -34,6 +59,7 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.props = props;
       // To access props later use this.props.someOption;
+      this.props.slug = props.slug;
 
       done();
     }.bind(this));
@@ -45,13 +71,7 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copyTpl(
         this.templatePath('_'),
         this.destinationPath('.'),
-        {
-          theme_name: 'name',
-          theme_uri: 'uri',
-          theme_description: 'description',
-          theme_author: 'author',
-          theme_slug: 'slug'
-        }
+        this.props // All props can be used in template
       );
 
       this.fs.copy(
