@@ -23,16 +23,16 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-gulp-underscore from npm, run:
+To install generator-gulp-underscores from npm, run:
 
 ```bash
-npm install -g generator-gulp-underscore
+npm install -g generator-gulp-underscores
 ```
 
 Finally, initiate the generator:
 
 ```bash
-yo gulp-underscore
+yo gulp-underscores
 ```
 
 ### Getting To Know Yeoman
@@ -41,6 +41,11 @@ Yeoman has a heart of gold. He's a person with feelings and opinions, but he's v
 
 If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
+### Options
+
+Currently the only options that work are the ones that have to do with the templating. This is mainly for projects that I scaffold, and they (almost) always contain bootstrap and *always* use SASS.
+
+If there is demand in this at all I will add more :)
 
 ## License
 
