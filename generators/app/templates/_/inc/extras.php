@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package generator_gulp_name
+ * @package <%= theme_name %>
  */
 
 /**
@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function generator_gulp_slug_body_classes( $classes ) {
+function <%= theme_slug %>_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -21,4 +21,4 @@ function generator_gulp_slug_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'generator_gulp_slug_body_classes' );
+add_filter( 'body_class', '<%= theme_slug %>_body_classes' );

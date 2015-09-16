@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package generator_gulp_name
+ * @package <%= theme_name %>
  */
 
 ?>
@@ -15,9 +15,9 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'generator_gulp_slug' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'generator_gulp_slug' ), 'WordPress' ); ?></a>
+			<a href="<?php echo esc_url( __( 'https://wordpress.org/', '<%= theme_slug %>' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', '<%= theme_slug %>' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'generator_gulp_slug' ), 'generator_gulp_slug', '<a href="http://generator_gulp_uri" rel="designer">generator_gulp_author</a>' ); ?>
+			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', '<%= theme_slug %>' ), '<%= theme_slug %>', '<a href="<%= theme_uri %>" rel="designer"><%= theme_author %></a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

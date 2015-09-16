@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package generator_gulp_name
+ * @package <%= theme_name %>
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

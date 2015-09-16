@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package generator_gulp_name
+ * @package <%= theme_name %>
  */
 
 get_header(); ?>

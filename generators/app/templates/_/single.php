@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package generator_gulp_name
+ * @package <%= theme_name %>
  */
 
 get_header(); ?>

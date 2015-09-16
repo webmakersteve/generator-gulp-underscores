@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package generator_gulp_name
+ * @package <%= theme_name %>
  */
 
 ?>
@@ -15,7 +15,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php generator_gulp_slug_posted_on(); ?>
+			<?php <%= theme_slug %>_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -25,7 +25,7 @@
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php generator_gulp_slug_entry_footer(); ?>
+		<?php <%= theme_slug %>_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 

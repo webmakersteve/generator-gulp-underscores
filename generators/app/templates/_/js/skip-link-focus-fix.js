@@ -3,7 +3,7 @@
  *
  * Helps with accessibility for keyboard only users.
  *
- * Learn more: https://github.com/Automattic/generator_gulp_name/pull/136
+ * Learn more: https://github.com/Automattic/<%= theme_name %>/pull/136
  */
 ( function() {
 	var is_webkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
