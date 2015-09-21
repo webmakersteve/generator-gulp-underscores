@@ -35,6 +35,32 @@ Finally, initiate the generator:
 yo gulp-underscores
 ```
 
+### Options
+
+**Theme Author**
+This should be the theme author as it will be listed in the stylesheet. Defaults to the folder name with the suffix author. Don't leave it like that :)
+
+**Theme Name**
+Awesome theme name. Defaults to the folder name.
+
+**Theme Slug**
+The prefix for all of your theme's functions. Defaults to the folder name
+
+**Theme URI**
+Theme URI listed in the stylesheet.
+
+**Theme Description**
+Description that will appear on your theme's page
+
+**Bootstrap?**
+Choose whether to include bootstrap. Defaults to yes.
+
+**SASS?**
+Choose whether to include SASS. Defaults to yes
+
+**Server Address**
+The address your local server runs on. Required so browsersync can do its thing.
+
 ### Getting To Know Yeoman
 
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.

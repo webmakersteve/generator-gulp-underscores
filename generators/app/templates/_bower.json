@@ -9,8 +9,8 @@
     "tests"
   ],
   "dependencies": {
-    <% if bootstrap { %>
-      <% if sass { %>
+    <% if (bootstrap) { %>
+      <% if (SASS) { %>
         "bootstrap-sass-official": "~3.3.5",
       <% } else { %>
         "bootstrap": "~3.3.5",

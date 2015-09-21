@@ -29,7 +29,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'theme_slug',
       message: 'What slug should identify your app?',
-      default: slug(this.appname, '_'),
+      default: null,
     },
     {
       type: 'input',
@@ -65,7 +65,10 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.props = props;
       // To access props later use this.props.someOption;
-      this.props.slug = props.slug;
+      if (this.props.slug === null) {
+        /* jshint -W106 */
+        this.props.slug = slug(this.props.theme_name);
+      }
 
       done();
     }.bind(this));
@@ -85,6 +88,7 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('package.json'),
         this.props
       );
+
       this.fs.copyTpl(
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json'),

@@ -5,8 +5,8 @@ var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync').create();
-var sass = require('gulp-sass');
+var browserSync = require('browser-sync').create();<% if (SASS) { %>
+var sass = require('gulp-sass');<% } %>
 var autoprefixer = require('gulp-autoprefixer');
 
 var URL = '<%= server_address %>';
@@ -14,7 +14,7 @@ var URL = '<%= server_address %>';
 var paths = {
   scripts: 'js/**/*.coffee',
   images: 'images/**/*',
-  styles: 'sass/style.<%= sass ? 's' : '' %>css',
+  styles: 'sass/style.<%= SASS ? 's' : '' %>css',
   php: './**/*.php'
 };
 
@@ -31,7 +31,7 @@ gulp.task('scripts', function() {
 
 });
 
-<% if sass { %>
+<% if (SASS) { %>
 gulp.task('styles', function () {
   gulp.src(paths.styles)
     .pipe(sass().on('error', sass.logError))
