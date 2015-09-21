@@ -52,21 +52,25 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 $fa-font-path: 'bower_components/fontawesome/fonts';
 @import '../bower_components/fontawesome/scss/font-awesome';
 
+<% if bootstrap { %>
 /*--------------------------------------------------------------
 # Bootstrap
 ----------------------------------------------------------------*/
 $icon-font-path: 'bower_components/bootstrap-sass-official/assets/fonts/';
 @import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+<% } else { %>
 
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
-// @import "normalize";
+@import "normalize";
 
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
-// @import "typography/typography";
+@import "typography/typography";
+
+<% } %>
 
 /*--------------------------------------------------------------
 # Elements

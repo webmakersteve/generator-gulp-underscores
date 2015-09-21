@@ -47,13 +47,19 @@ module.exports = yeoman.generators.Base.extend({
       type: 'confirm',
       name: 'bootstrap',
       message: 'Should we include bootstrap for you?',
-      default: true
+      default: true,
     },
     {
       type: 'confirm',
       name: 'SASS',
       message: 'Do you want to use SASS?',
-      default: true
+      default: true,
+    },
+    {
+      type: 'input',
+      name: 'server_address',
+      message: 'What address will your WordPress install run on?',
+      default: 'localhost:8080',
     }];
 
     this.prompt(prompts, function (props) {
@@ -74,13 +80,15 @@ module.exports = yeoman.generators.Base.extend({
         this.props // All props can be used in template
       );
 
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('_package.json'),
-        this.destinationPath('package.json')
+        this.destinationPath('package.json'),
+        this.props
       );
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
+        this.destinationPath('bower.json'),
+        this.props
       );
     },
 
@@ -93,14 +101,20 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('jshintrc'),
         this.destinationPath('.jshintrc')
       );
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('Gulpfile.js'),
-        this.destinationPath('Gulpfile.js')
+        this.destinationPath('Gulpfile.js'),
+        this.props
       );
       this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore')
       );
+
+      // Delete the sass files if we arent using it
+      if (!this.sass) {
+        this.fs.delete(this.destinationPath('sass'));
+      }
     }
   },
 

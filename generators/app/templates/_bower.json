@@ -9,7 +9,13 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass-official": "~3.3.5",
+    <% if bootstrap { %>
+      <% if sass { %>
+        "bootstrap-sass-official": "~3.3.5",
+      <% } else { %>
+        "bootstrap": "~3.3.5",
+      <% } %>
+    <% } %>
     "fontawesome": "~4.4.0",
     "html5shiv": "~3.7.3",
     "modernizr": "~2.8.3",

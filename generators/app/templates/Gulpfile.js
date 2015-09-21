@@ -5,14 +5,16 @@ var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
-var livereload = require('gulp-livereload');
+var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
+
+var URL = '<%= server_address %>';
 
 var paths = {
   scripts: 'js/**/*.coffee',
   images: 'images/**/*',
-  sass: 'sass/style.scss',
+  styles: 'sass/style.<%= sass ? 's' : '' %>css',
   php: './**/*.php'
 };
 
@@ -25,28 +27,41 @@ gulp.task('scripts', function() {
       .pipe(uglify())
       .pipe(concat('main.min.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('js'))
-    .pipe(livereload());
+    .pipe(gulp.dest('js'));
+
 });
 
-gulp.task('php', function() {
-  livereload.reload('/');
-});
-
-gulp.task('sass', function () {
-  gulp.src(paths.sass)
+<% if sass { %>
+gulp.task('styles', function () {
+  gulp.src(paths.styles)
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
 });
+<% } else { %>
+gulp.task('styles', function () {
+  gulp.src(paths.styles)
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('./'))
+    .pipe(browserSync.stream());
+});
+<% } %>
+
+gulp.task('reload-scripts', ['scripts'], browserSync.reload);
 
 gulp.task('watch', function() {
-  livereload.listen();
-  gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.php, ['php']);
+  gulp.watch(paths.styles, ['styles']);
+  gulp.watch(paths.scripts, ['reload-scripts']);
+  gulp.watch(paths.php).on('change', browserSync.reload);
+});
+
+gulp.task('serve', function() {
+  browserSync.init({
+    proxy: URL,
+    ghostMode: true,
+  });
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['watch', 'scripts', 'sass']);
+gulp.task('default', ['serve', 'scripts', 'styles', 'watch']);
