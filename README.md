@@ -1,4 +1,4 @@
-# generator-gulp-underscore [![Build Status](https://secure.travis-ci.org/webmakersteve/generator-gulp-underscore.png?branch=master)](https://travis-ci.org/webmakersteve/generator-gulp-underscore)
+# generator-gulp-underscores [![Build Status](https://travis-ci.org/webmakersteve/generator-gulp-underscores.svg?branch=master)](https://travis-ci.org/webmakersteve/generator-gulp-underscores)
 
 > [Yeoman](http://yeoman.io) generator
 
