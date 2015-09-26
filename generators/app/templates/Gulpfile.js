@@ -8,8 +8,15 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();<% if (SASS) { %>
 var sass = require('gulp-sass');<% } %>
 var autoprefixer = require('gulp-autoprefixer');
+var connect = require('gulp-connect-php');
+var open = require('gulp-open');
+var urlUtil = require('url');
 
 var URL = '<%= server_address %>';
+var parsedUrl = urlUtil.parse(URL);
+var hostname = parsedUrl.hostname;
+var host = parsedUrl.host;
+var port = parsedUrl.port || 80;
 
 var paths = {
   scripts: 'js/**/*.coffee',
@@ -48,6 +55,23 @@ gulp.task('styles', function () {
 });
 <% } %>
 
+gulp.task('serve', function() {
+
+  connect.server({
+    port: parseInt(port) + 1,
+    hostname: hostname,
+    base: '../../../', // default for a wordpress install
+    open: false
+  }, function() {
+    browserSync({
+      host: hostname,
+      proxy: host,
+      port: port,
+      ghostMode: true,
+    });
+  });
+})
+
 gulp.task('reload-scripts', ['scripts'], browserSync.reload);
 
 gulp.task('watch', function() {
@@ -56,12 +80,5 @@ gulp.task('watch', function() {
   gulp.watch(paths.php).on('change', browserSync.reload);
 });
 
-gulp.task('serve', function() {
-  browserSync.init({
-    proxy: URL,
-    ghostMode: true,
-  });
-});
-
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['serve', 'scripts', 'styles', 'watch']);
+gulp.task('default', ['serve', 'scripts', 'styles', 'serve', 'watch']);
