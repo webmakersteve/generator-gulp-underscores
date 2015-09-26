@@ -5,14 +5,14 @@ var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync').create();<% if (SASS) { %>
+var browserSync = require('browser-sync');<% if (SASS) { %>
 var sass = require('gulp-sass');<% } %>
 var autoprefixer = require('gulp-autoprefixer');
 var connect = require('gulp-connect-php');
-var open = require('gulp-open');
+//var open = require('gulp-open');
 var urlUtil = require('url');
 
-var URL = '<%= server_address %>';
+var URL = 'http://<%= server_address %>';
 var parsedUrl = urlUtil.parse(URL);
 var hostname = parsedUrl.hostname;
 var host = parsedUrl.host;
@@ -66,8 +66,7 @@ gulp.task('serve', function() {
     browserSync({
       host: hostname,
       proxy: host,
-      port: port,
-      ghostMode: true,
+      port: port
     });
   });
 });
