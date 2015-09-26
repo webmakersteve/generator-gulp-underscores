@@ -70,7 +70,7 @@ gulp.task('serve', function() {
       ghostMode: true,
     });
   });
-})
+});
 
 gulp.task('reload-scripts', ['scripts'], browserSync.reload);
 
