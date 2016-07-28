@@ -33,7 +33,7 @@ class <%= theme_slug %>_Comments_Walker extends Walker_Comment {
         if ($depth) $comment_depth = $depth;
         if ($currentComment) $comment = $currentComment;
     }
-    function start_el( &$output, $comment, $depth, $args, $id = 0 ) {
+    function start_el( &$output, $comment, $depth = 0, $args = 0, $id = 0 ) {
         $this->setGlobals( $depth, $comment );
         $depth++;
         $this->current_comment_depth = $depth;
